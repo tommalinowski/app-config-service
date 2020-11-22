@@ -1,0 +1,29 @@
+{
+  "name": "app-config-service",
+  "version": "1.0.0",
+  "description": "App config service",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tommalinowski/app-config-service.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tommalinowski/app-config-service/issues"
+  },
+  "homepage": "https://github.com/tommalinowski/app-config-service#readme",
+  "engines": {
+    "node": "^10"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "mongoose": "^5.10.15"
+  }
+}
