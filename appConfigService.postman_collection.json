@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "0eac99e6-2f8d-4321-848f-ba753d13d5d6",
+		"name": "appConfigService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create config",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"client\": \"brand_new\", \"version\": 121, \"key\": \"w\", \"value\": \"1250\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/config",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update config for client and version",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"key\": \"config-to-add3\", \"value\": \"someValue3\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/config/ios/262",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config",
+						"ios",
+						"262"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update config",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"client\":\"ios\", \"version\": 269, \"key\": \"config-to-add2\", \"value\": \"someValue3\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/config",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "replace config for client and version",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"key\": \"version1\", \"value\": [\"hello2\"]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/config/ios/262",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config",
+						"ios",
+						"262"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get config for latest client version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/config/ios",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config",
+						"ios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get config for specific client version",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/config/ios/262",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config",
+						"ios",
+						"262"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete config",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/config/ios/269",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"config",
+						"ios",
+						"269"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
