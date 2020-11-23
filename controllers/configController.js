@@ -41,7 +41,7 @@ exports.getConfigForClient = catchAsync(async (req, res, next) => {
     return next(new AppError('No configs found for requested client', 404));
   }
 
-  res.status(200).json(getConfigObjectResponse(config));
+  res.status(200).json(getClientConfigsObjectResponse(config));
 });
 
 exports.getConfigForClientAndVersion = catchAsync(async (req, res, next) => {
@@ -56,7 +56,7 @@ exports.getConfigForClientAndVersion = catchAsync(async (req, res, next) => {
     );
   }
 
-  res.status(200).json(getConfigObjectResponse(config));
+  res.status(200).json(getClientConfigsObjectResponse(config));
 });
 
 exports.updateConfigForClientAndVersion = catchAsync(async (req, res, next) => {
@@ -75,7 +75,7 @@ exports.updateConfigForClientAndVersion = catchAsync(async (req, res, next) => {
   config.clientConfigs.set(req.body.key, req.body.value);
   await config.save();
 
-  res.status(200).json(getConfigObjectResponse(config));
+  res.status(200).json(getClientConfigsObjectResponse(config));
 });
 
 exports.replaceConfigForClientAndVersion = catchAsync(
@@ -98,7 +98,7 @@ exports.replaceConfigForClientAndVersion = catchAsync(
     config.clientConfigs.set(req.body.key, req.body.value);
     await config.save();
 
-    res.status(200).json(getConfigObjectResponse(config));
+    res.status(200).json(getClientConfigsObjectResponse(config));
   }
 );
 
@@ -128,11 +128,11 @@ const getConfigObjectResponse = (configObject) => {
   return (configResponse = {
     client: configObject.client,
     version: configObject.version,
-    ...getClientConfigsProperties(configObject),
+    ...getClientConfigsObjectResponse(configObject),
   });
 };
 
-const getClientConfigsProperties = (configObject) => {
+const getClientConfigsObjectResponse = (configObject) => {
   const resultObject = {};
   configObject.clientConfigs.forEach((value, key) => {
     resultObject[key] = value;

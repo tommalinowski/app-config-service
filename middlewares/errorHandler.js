@@ -1,3 +1,13 @@
+const AppError = require('./../utils/appError');
+
+const handleDuplicateFieldsDB = (err) => {
+  const duplicateFields = Object.keys(err.keyValue);
+  const message = `Duplicate value for fields: ${duplicateFields.join(
+    ', '
+  )}. Please use another value!`;
+  return new AppError(message, 400);
+};
+
 const sendError = (err, res) => {
   // Expected errors
   if (err.isOperational) {
@@ -18,6 +28,8 @@ const sendError = (err, res) => {
 
 module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
-  err.status = err.status || 'error';
+  if (err.code === 11000) {
+    err = handleDuplicateFieldsDB(err);
+  }
   sendError(err, res);
 };

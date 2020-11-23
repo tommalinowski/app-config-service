@@ -12,7 +12,12 @@ app.use(express.json());
 app.use('/config', configRouter);
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  next(
+    new AppError(
+      `Can't find ${req.originalUrl} on this server for given request type!`,
+      404
+    )
+  );
 });
 
 app.use(errorHandler);

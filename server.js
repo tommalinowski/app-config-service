@@ -10,10 +10,16 @@ process.on('uncaughtException', (err) => {
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+let DB;
+
+if (process.env.NODE_ENV === 'test') {
+  DB = process.env.DATABASE_TESTS;
+} else {
+  DB = process.env.DATABASE.replace(
+    '<PASSWORD>',
+    process.env.DATABASE_PASSWORD
+  );
+}
 
 mongoose
   .connect(DB, {
@@ -35,3 +41,5 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
   });
 });
+
+module.exports = server;
