@@ -4,7 +4,7 @@
   "description": "App config service",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "jest --watchAll --verbose"
   },
   "repository": {
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/tommalinowski/app-config-service#readme",
   "engines": {
-    "node": "^10"
+    "node": ">=10.0.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
