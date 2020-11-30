@@ -2,3 +2,5 @@ language: node_js
 node_js:
   - 11
 services: mongodb
+env:
+  - DATABASE_TESTS="mongodb://localhost:27017/app-config-service-test"
